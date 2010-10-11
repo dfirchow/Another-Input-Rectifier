@@ -47,13 +47,15 @@ or the much easier
 Digital Extension Methods
 -------------------------
 Any class the implements IDigitalControl will also recieve these extension methods
- * `Filter()` - returns a filtered (or one-shot) version of the control.
- * `Analog()` - returns an analog version of the control where `IAnalogControl.Value` will be 1 when the button is pressed and 0 otherwise.
+
+ *   `Filter()` - returns a filtered (or one-shot) version of the control.
+ *   `Analog()` - returns an analog version of the control where `IAnalogControl.Value` will be 1 when the button is pressed and 0 otherwise.
 
 Work in progress
 ----------------
 Still lots to do. Add methods for the mouse and gamepads. For now `Air` also provides access to the raw input state through these properties
- * `Air.MouseState` and `Air.PreviousMouseState`
- * `Air.KeyboardState` and `Air.PreviousKeyboardState`
- * Gamepads can't be a property because you need to know the player
-   - `Air.GamePadState(PlayerIndex player)` and `Air.PreviousGamePadState(PlayerIndex player)`
+
+ *   `Air.MouseState` and `Air.PreviousMouseState`
+ *   `Air.KeyboardState` and `Air.PreviousKeyboardState`
+ *   Gamepads can't be a property because you need to know the player
+     -   `Air.GamePadState(PlayerIndex player)` and `Air.PreviousGamePadState(PlayerIndex player)`
