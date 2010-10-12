@@ -48,12 +48,15 @@ namespace TestAir
 
             escapeControl = new DigitalFilterControl(Air.CreateKeyboardControl(Keys.Escape));
 
+            // You can use the Keys.ToDigitalControl() extension method
+            // to create controls
             ButtonDirectionControl movementControl = new ButtonDirectionControl(
-                Air.CreateKeyboardControl(Keys.A),
-                Air.CreateKeyboardControl(Keys.D),
-                Air.CreateKeyboardControl(Keys.W),
-                Air.CreateKeyboardControl(Keys.S));
+                Keys.A.ToDigitalControl(),
+                Keys.D.ToDigitalControl(),
+                Keys.W.ToDigitalControl(),
+                Keys.S.ToDigitalControl());
 
+            // Or you can use Air.CreateKeyboardControl(Keys key)
             playerControls = new PlayerControls(
                 new DigitalDirectionControl(movementControl),
                 Air.CreateKeyboardControl(Keys.W).Filter(),

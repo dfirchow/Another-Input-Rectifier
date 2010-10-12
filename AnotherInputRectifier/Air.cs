@@ -119,15 +119,7 @@ namespace AnotherInputRectifier
 
         public static IAnalogDirectionControl CreateMouseControl()
         {
-            return new MousePositionControl();
-        }
-
-        private class MousePositionControl : IAnalogDirectionControl
-        {
-            public Vector2 Value
-            {
-                get { return new Vector2(MouseState.X, MouseState.Y); }
-            }
+            return new Details.MousePositionControl();
         }
             
 #endif
@@ -153,25 +145,7 @@ namespace AnotherInputRectifier
 
         public static IDigitalControl CreateKeyboardControl(Keys key)
         {
-            return new DigitalKeyboardControl(key);
-        }
-
-        /// <summary>
-        /// Implements a digital control based on a key from the keyboard
-        /// </summary>
-        private class DigitalKeyboardControl : IDigitalControl
-        {
-            private Keys key;
-
-            public DigitalKeyboardControl(Keys key)
-            {
-                this.key = key;
-            }
-
-            public bool Pressed
-            {
-                get { return Air.KeyboardState.IsKeyDown(key); }
-            }
+            return new Details.KeyControl(key);
         }
 
         #endregion
