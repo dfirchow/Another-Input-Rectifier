@@ -116,6 +116,20 @@ namespace AnotherInputRectifier
         {
             get { return previousMouseState; }
         }
+
+        public static IAnalogDirectionControl CreateMouseControl()
+        {
+            return new MousePositionControl();
+        }
+
+        private class MousePositionControl : IAnalogDirectionControl
+        {
+            public Vector2 Value
+            {
+                get { return new Vector2(MouseState.X, MouseState.Y); }
+            }
+        }
+            
 #endif
         #endregion
 

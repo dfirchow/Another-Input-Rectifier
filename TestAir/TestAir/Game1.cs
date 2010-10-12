@@ -20,8 +20,11 @@ namespace TestAir
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         PlayerControls playerControls;
-        DigitalFilterControl escapeControl;
+        IDigitalControl escapeControl;
+        IAnalogDirectionControl mousePosition;
+
         Color backgroundColor = Color.Black;
+        Texture2D mouse;
 
         public Game1()
         {
@@ -44,16 +47,30 @@ namespace TestAir
             // TODO: Add your initialization logic here
 
             escapeControl = new DigitalFilterControl(Air.CreateKeyboardControl(Keys.Escape));
+
             ButtonDirectionControl movementControl = new ButtonDirectionControl(
                 Air.CreateKeyboardControl(Keys.A),
                 Air.CreateKeyboardControl(Keys.D),
                 Air.CreateKeyboardControl(Keys.W),
                 Air.CreateKeyboardControl(Keys.S));
+
             playerControls = new PlayerControls(
                 new DigitalDirectionControl(movementControl),
                 Air.CreateKeyboardControl(Keys.W).Filter(),
                 Air.CreateKeyboardControl(Keys.Space).Filter(),
                 Air.CreateKeyboardControl(Keys.P).Filter());
+
+            mousePosition = Air.CreateMouseControl();
+
+            Color[] mouseColor = new Color[100];
+            for (int i = 0; i < mouseColor.Length; i++)
+            {
+                mouseColor[i] = Color.Brown;
+            }
+
+            mouse = new Texture2D(GraphicsDevice, 10, 10, false, SurfaceFormat.Color);
+            mouse.SetData<Color>(mouseColor);
+
             base.Initialize();
         }
 
@@ -76,6 +93,7 @@ namespace TestAir
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            mouse.Dispose();
         }
 
         /// <summary>
@@ -110,6 +128,10 @@ namespace TestAir
             {
                 backgroundColor = Color.Maroon;
             }
+            else
+            {
+                backgroundColor = Color.Black;
+            }
 
             base.Update(gameTime);
         }
@@ -123,7 +145,11 @@ namespace TestAir
             GraphicsDevice.Clear(backgroundColor);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
 
+            spriteBatch.Draw(mouse, mousePosition.Value, Color.Brown);
+
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
