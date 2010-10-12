@@ -43,7 +43,7 @@ This creates a regular digital control where `myControl.Pressed` will be true on
 or the much easier
 
     IDigitalControl myControl = Air.CreateKeyboardControl(Keys.Space).Filter();
-######Extensions
+####Extensions
 Can create keyboard controls directly from the Xna.Framework.Input.Keys enum
 
     Keys.Space.ToDigitalControl()
