@@ -17,13 +17,13 @@ Two Main Interfaces
         public float Value { get; }
     }
 
-These two form the basis for the rest of the library.
+These two interfaces form the basis for the rest of the library.
 
 Air
 ---
 
 The main class of the library. `Air` is a game component so its update method will be called automatically.
-Make sure to add to your game's components like so:
+Make sure to add it to your game's components like so:
 
     public YourGame()
     {
@@ -43,6 +43,10 @@ This creates a regular digital control where `myControl.Pressed` will be true on
 or the much easier
 
     IDigitalControl myControl = Air.CreateKeyboardControl(Keys.Space).Filter();
+######Extensions
+Can create keyboard controls directly from the Xna.Framework.Input.Keys enum
+
+    Keys.Space.ToDigitalControl()
 
 Digital Extension Methods
 -------------------------
