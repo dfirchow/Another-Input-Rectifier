@@ -62,7 +62,7 @@ namespace TestAir
                 Air.CreateKeyboardControl(Keys.W).Filter(),
                 Air.CreateKeyboardControl(Keys.Space).Filter(),
                 Air.CreateKeyboardControl(Keys.P).Filter());
-
+            
             mousePosition = Air.CreateMouseControl();
 
             Color[] mouseColor = new Color[100];

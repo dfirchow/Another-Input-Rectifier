@@ -6,7 +6,7 @@
     /// </summary>
     public class DigitalFilterControl : IDigitalControl
     {
-        private IDigitalControl control;
+        private readonly IDigitalControl control;
         private bool wasReleased;
 
         public DigitalFilterControl(IDigitalControl control)

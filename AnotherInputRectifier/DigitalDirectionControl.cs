@@ -2,7 +2,7 @@
 {
     public class DigitalDirectionControl : IDirectionControl
     {
-        private IDigitalDirectionControl control;
+        private readonly IDigitalDirectionControl control;
 
         public DigitalDirectionControl(IDigitalDirectionControl control)
         {

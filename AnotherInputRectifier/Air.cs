@@ -32,15 +32,25 @@ namespace AnotherInputRectifier
         private static short PlayerFour  = 3;
         #endregion
 
+        #region Public Enums
+        public enum Thumbsticks
+        {
+            Left, Right
+        }
+        public enum Mouse
+        {
+            Left, Right, Middle, X1, X2
+        }
+        #endregion
+
         #region Constructor and base overrides
-        
+
         public Air(Game game)
             : base(game)
         {
             // TODO: Construct any child components here
-
 #if !XBOX360
-            mouseState = Mouse.GetState();
+            mouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
 #endif
             keyboardState = Keyboard.GetState();
 
@@ -74,7 +84,7 @@ namespace AnotherInputRectifier
         {
 #if !XBOX360
             previousMouseState = mouseState;
-            mouseState = Mouse.GetState();
+            mouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
 #endif
 
             previousKeyboardState = keyboardState;
@@ -175,7 +185,7 @@ namespace AnotherInputRectifier
         /// <returns>GamePadState for PlayerIndex.One</returns>
         public static GamePadState GamePadState()
         {
-            return gamePadState[0];
+            return gamePadState[PlayerOne];
         }
 
         /// <summary>
@@ -198,7 +208,7 @@ namespace AnotherInputRectifier
         /// <returns>Player one's previous gamepad state.</returns>
         public static GamePadState PreviousGamePadState()
         {
-            return previousGamePadState[0];
+            return previousGamePadState[PlayerOne];
         }
 
         /// <summary>
@@ -221,7 +231,7 @@ namespace AnotherInputRectifier
         /// </returns>
         public static bool IsConnected()
         {
-            return gamePadState[0].IsConnected;
+            return gamePadState[PlayerOne].IsConnected;
         }
 
         /// <summary>
@@ -234,10 +244,10 @@ namespace AnotherInputRectifier
         {
             switch (player)
             {
-                case PlayerIndex.One:   return 0;
-                case PlayerIndex.Two:   return 1;
-                case PlayerIndex.Three: return 2;
-                case PlayerIndex.Four:  return 3;
+                case PlayerIndex.One:   return PlayerOne;
+                case PlayerIndex.Two:   return PlayerTwo;
+                case PlayerIndex.Three: return PlayerThree;
+                case PlayerIndex.Four:  return PlayerFour;
             }
 
             return -1; // Return bad value

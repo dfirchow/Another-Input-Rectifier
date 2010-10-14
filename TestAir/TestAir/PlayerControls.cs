@@ -9,13 +9,13 @@ namespace TestAir
 {
     public class PlayerControls
     {
-        private DigitalDirectionControl movement;
+        private IDirectionControl movement;
         private DigitalFilterControl jump;
         private DigitalFilterControl fire;
         private DigitalFilterControl pause;
 
         public PlayerControls(
-            DigitalDirectionControl movement,
+            IDirectionControl movement,
             DigitalFilterControl jump,
             DigitalFilterControl fire,
             DigitalFilterControl pause)

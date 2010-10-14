@@ -2,7 +2,7 @@
 {
     public class DigitalToAnalogAdapter : IAnalogControl
     {
-        private IDigitalControl control;
+        private readonly IDigitalControl control;
 
         public DigitalToAnalogAdapter(IDigitalControl control)
         {

@@ -2,7 +2,7 @@
 {
     public class AnalogDirectionControl : IDirectionControl
     {
-        private IAnalogDirectionControl control;
+        private readonly IAnalogDirectionControl control;
 
         public AnalogDirectionControl(IAnalogDirectionControl control)
         {

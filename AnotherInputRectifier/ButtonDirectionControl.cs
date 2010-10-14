@@ -2,7 +2,7 @@
 {
     public class ButtonDirectionControl : IDigitalDirectionControl
     {
-        private IDigitalControl left, right, up, down;
+        private readonly IDigitalControl left, right, up, down;
 
         public ButtonDirectionControl(IDigitalControl left,
                                       IDigitalControl right,

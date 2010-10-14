@@ -7,7 +7,7 @@ namespace AnotherInputRectifier
 {
     public class AnalogToDigitalAdapter : IDigitalControl
     {
-        private IAnalogControl control;
+        private readonly IAnalogControl control;
 
         public AnalogToDigitalAdapter(IAnalogControl control)
         {

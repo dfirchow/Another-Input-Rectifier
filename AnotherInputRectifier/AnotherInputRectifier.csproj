@@ -97,6 +97,7 @@
     <Compile Include="AnalogToDigitalAdapter.cs" />
     <Compile Include="ButtonDirectionControl.cs" />
     <Compile Include="Details\MousePositionControl.cs" />
+    <Compile Include="Details\ThumbstickControl.cs" />
     <Compile Include="DigitalControlExtensions.cs" />
     <Compile Include="DigitalDirectionControl.cs" />
     <Compile Include="DigitalFilterControl.cs" />
@@ -104,7 +105,7 @@
     <Compile Include="DirectionControlInterfaces.cs" />
     <Compile Include="ControlInterfaces.cs" />
     <Compile Include="KeyboardExtensions.cs" />
-    <Compile Include="Details\KeyboardControl.cs" />
+    <Compile Include="Details\KeyControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

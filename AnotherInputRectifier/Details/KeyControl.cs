@@ -7,7 +7,7 @@ namespace AnotherInputRectifier.Details
     /// </summary>
     internal class KeyControl : IDigitalControl
     {
-        private Keys key;
+        private readonly Keys key;
 
         public KeyControl(Keys key)
         {
