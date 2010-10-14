@@ -12,9 +12,9 @@ namespace AnotherInputRectifier.Details
     internal class ThumbstickControl : IAnalogDirectionControl
     {
         private readonly PlayerIndex player;
-        private readonly Air.Thumbsticks t;
+        private readonly Air.GamePad.Thumbsticks t;
 
-        public ThumbstickControl(PlayerIndex player, Air.Thumbsticks t)
+        public ThumbstickControl(PlayerIndex player, Air.GamePad.Thumbsticks t)
         {
             this.player = player;
             this.t = t;
@@ -24,7 +24,7 @@ namespace AnotherInputRectifier.Details
         {
             get
             {
-                if (t == Air.Thumbsticks.Left)
+                if (t == Air.GamePad.Thumbsticks.Left)
                 {
                     return Air.GamePadState(player).ThumbSticks.Left;
                 }

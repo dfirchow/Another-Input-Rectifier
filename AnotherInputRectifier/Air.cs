@@ -17,6 +17,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+// These are used because I'm defining Air.Gamepad and Air.Mouse
+using XnaKeyboard = Microsoft.Xna.Framework.Input.Keyboard;
+using XnaGamePad = Microsoft.Xna.Framework.Input.GamePad;
+using XnaMouse = Microsoft.Xna.Framework.Input.Mouse;
+
 
 namespace AnotherInputRectifier
 {
@@ -33,14 +38,35 @@ namespace AnotherInputRectifier
         #endregion
 
         #region Public Enums
-        public enum Thumbsticks
+
+        public static class GamePad
         {
-            Left, Right
+            public static enum Thumbsticks
+            {
+                Left, Right
+            }
+
+            public static enum Triggers
+            {
+                Left, Right
+            }
+
+            public static enum Buttons
+            {
+                Back, BigButton, Start, 
+                A, B, X, Y,
+                LeftShoulder, RightShoulder,
+                LeftStick, RightStick
+            }
         }
-        public enum Mouse
+        
+#if !XBOX360
+        public static enum Mouse
         {
             Left, Right, Middle, X1, X2
         }
+#endif
+
         #endregion
 
         #region Constructor and base overrides
@@ -50,7 +76,7 @@ namespace AnotherInputRectifier
         {
             // TODO: Construct any child components here
 #if !XBOX360
-            mouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
+            mouseState = XnaMouse.GetState();
 #endif
             keyboardState = Keyboard.GetState();
 
@@ -84,7 +110,7 @@ namespace AnotherInputRectifier
         {
 #if !XBOX360
             previousMouseState = mouseState;
-            mouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
+            mouseState = XnaMouse.GetState();
 #endif
 
             previousKeyboardState = keyboardState;
@@ -100,10 +126,10 @@ namespace AnotherInputRectifier
 
         private void UpdateGamePadStates()
         {
-            gamePadState[PlayerOne] = GamePad.GetState(PlayerIndex.One);
-            gamePadState[PlayerTwo] = GamePad.GetState(PlayerIndex.Two);
-            gamePadState[PlayerThree] = GamePad.GetState(PlayerIndex.Three);
-            gamePadState[PlayerFour] = GamePad.GetState(PlayerIndex.Four);
+            gamePadState[PlayerOne] = XnaGamePad.GetState(PlayerIndex.One);
+            gamePadState[PlayerTwo] = XnaGamePad.GetState(PlayerIndex.Two);
+            gamePadState[PlayerThree] = XnaGamePad.GetState(PlayerIndex.Three);
+            gamePadState[PlayerFour] = XnaGamePad.GetState(PlayerIndex.Four);
         }
 
         #endregion
