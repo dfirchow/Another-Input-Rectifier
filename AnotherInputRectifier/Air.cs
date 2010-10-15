@@ -58,6 +58,11 @@ namespace AnotherInputRectifier
                 LeftShoulder, RightShoulder,
                 LeftStick, RightStick
             }
+
+            public static enum DPad
+            {
+                Left, Right, Up, Down
+            }
         }
         
 #if !XBOX360

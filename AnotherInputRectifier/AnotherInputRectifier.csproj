@@ -96,8 +96,11 @@
     <Compile Include="AnalogDirectionControl.cs" />
     <Compile Include="AnalogToDigitalAdapter.cs" />
     <Compile Include="ButtonDirectionControl.cs" />
+    <Compile Include="Details\GamePadButtonControl.cs" />
+    <Compile Include="Details\GamePadDPadControl.cs" />
     <Compile Include="Details\MousePositionControl.cs" />
     <Compile Include="Details\ThumbstickControl.cs" />
+    <Compile Include="Details\TriggerControl.cs" />
     <Compile Include="DigitalControlExtensions.cs" />
     <Compile Include="DigitalDirectionControl.cs" />
     <Compile Include="DigitalFilterControl.cs" />
