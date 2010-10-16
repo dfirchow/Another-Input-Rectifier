@@ -11,6 +11,12 @@ namespace AnotherInputRectifier.Details
         private readonly PlayerIndex player;
         private readonly Air.GamePad.Triggers trigger;
 
+        public TriggerControl(PlayerIndex player, Air.GamePad.Triggers trigger)
+        {
+            this.player = player;
+            this.trigger = trigger;
+        }
+
         public float Value
         {
             get

@@ -37,21 +37,21 @@ namespace AnotherInputRectifier
         private static short PlayerFour  = 3;
         #endregion
 
-        #region Public Enums
+        #region GamePad and Mouse static classes
 
         public static class GamePad
         {
-            public static enum Thumbsticks
+            public enum Thumbsticks
             {
                 Left, Right
             }
 
-            public static enum Triggers
+            public enum Triggers
             {
                 Left, Right
             }
 
-            public static enum Buttons
+            public enum Buttons
             {
                 Back, BigButton, Start, 
                 A, B, X, Y,
@@ -59,16 +59,47 @@ namespace AnotherInputRectifier
                 LeftStick, RightStick
             }
 
-            public static enum DPad
+            public enum DPad
             {
                 Left, Right, Up, Down
+            }
+
+            /// <summary>
+            /// Returns a digital direction control for a player's dpad.
+            /// </summary>
+            /// <param name="player">player index for a gamepad</param>
+            /// <returns>control for a dpad</returns>
+            public static IDigitalDirectionControl DPadControl(PlayerIndex player)
+            {
+                return new Details.GamePadDPadControl(player);
+            }
+
+            /// <summary>
+            /// Returns a digital direction control for player one's dpad.
+            /// </summary>
+            /// <returns>control for a dpad</returns>
+            public static IDigitalDirectionControl DPadControl()
+            {
+                return new Details.GamePadDPadControl(PlayerIndex.One);
             }
         }
         
 #if !XBOX360
-        public static enum Mouse
+        public static class Mouse
         {
-            Left, Right, Middle, X1, X2
+            public enum Buttons
+            {
+                Left, Right, Middle, X1, X2
+            }
+
+            /// <summary>
+            /// Gets mouse position as an
+            /// analog direction control.
+            /// </summary>
+            public static IAnalogDirectionControl Position
+            {
+                get { return new Details.MousePositionControl(); }
+            }
         }
 #endif
 

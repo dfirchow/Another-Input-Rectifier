@@ -63,8 +63,16 @@ namespace TestAir
                 Air.CreateKeyboardControl(Keys.Space).Filter(),
                 Air.CreateKeyboardControl(Keys.P).Filter());
             
-            mousePosition = Air.CreateMouseControl();
+            // Old way to get mouse position
+            // mousePosition = Air.CreateMouseControl();
 
+            // New way to get mouse position
+            mousePosition = Air.Mouse.Position;
+
+            // Set up the "mouse cursor"
+            // a 10x10 pixel brown square
+            // I was too lazy to create an image in MS Paint
+            #region Mouse Cursor
             Color[] mouseColor = new Color[100];
             for (int i = 0; i < mouseColor.Length; i++)
             {
@@ -73,6 +81,7 @@ namespace TestAir
 
             mouse = new Texture2D(GraphicsDevice, 10, 10, false, SurfaceFormat.Color);
             mouse.SetData<Color>(mouseColor);
+            #endregion
 
             base.Initialize();
         }
